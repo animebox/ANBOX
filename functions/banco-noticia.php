@@ -10,7 +10,7 @@
 		function BuscaListaNoticia($pagina){
 			$limite = 10;
 			$inicio = ($pagina * $limite) - $limite;
-			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIATEXTO, NOTICIAEMBED FROM NOTICIA LIMIT ".$inicio.",".$limite."";
+			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIATEXTO, NOTICIAEMBED FROM NOTICIA LIMIT ".$inicio.",".$limite." ORDER BY NOTICIAID DESC";
 			$result = parent::Execute($sql);
 			return $result;
 		}
