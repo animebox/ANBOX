@@ -52,7 +52,7 @@
 		function CarregaPaginas(){
 				
 			#urlDesenvolve = ignora 'animebox' e oq tiver antes.
-			$urlDesenvolve = 'animebox';
+			$urlDesenvolve = 'anbox';
 			$primeiraBol = true;
 			$uri = strtolower($_SERVER["REQUEST_URI"]);
 			$exUrls = explode('/',$uri);
