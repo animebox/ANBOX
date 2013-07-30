@@ -8,7 +8,7 @@
 		}
 		
 		function BuscaListaNoticia($pagina){
-			$limite = 2;
+			$limite = 10;
 			$inicio = ($pagina * $limite) - $limite;
 			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIATEXTO, NOTICIAEMBED FROM NOTICIA LIMIT ".$inicio.",".$limite."";
 			$result = parent::Execute($sql);
@@ -25,7 +25,7 @@
 			$sql = "SELECT NOTICIAID FROM NOTICIA";	
 			$result = parent::Execute($sql);
 			$totalPaginas = mysql_num_rows($result);
-			$result = ceil($totalPaginas / 1);
+			$result = ceil($totalPaginas / 10);
 			return $result;
 		}
 	}
