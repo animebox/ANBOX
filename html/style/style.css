@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+Body {
+	margin: 0px;
+	font-family: Helvetica Neue,helvetica,Arial,sans-serif;
+}
+	
+.Geral{
+	padding-bottom: 50px;
+	width: 100%;
+	margin: auto;
+}
+
+
+.MenuSuperior{
+	background-color: #333;
+	right: 0;
+	left: 0;
+	top: 0;
+	height: 40px;
+	position: fixed;
+	color: #fff;
+	font-size:12px;
+	text-align: center;
+}
+
+
+.logo{
+	background-image: url(../images/animebox.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 120px;
+}
+
+.central{
+	background-color:#FFF;
+	padding-top:20px;
+	width: 100%;
+	margin: auto;
+}
+
+.formEntrar{
+	text-align:left;	
+	width: 300px;
+	margin: auto;
+}
+
+.formEntrarCampos{
+	width: 300px;
+	font-size:18px;	
+}
+
+.formNoticia{
+	text-align:left;
+	width: 600px;
+	margin: auto;	
+}
+
+.Botao{
+	font-size:18px;
+	border: none;
+	width: 100%;
+	background-color: #333;
+	color: #fff;
+	padding: 15px;
+}
+
+.principal {
+	 width: 80%;
+	 margin: auto;
+	 text-align:center;
+}
+
+.menuPrincipal {
+	 width: 80%;
+	 margin: auto;
+	 text-align: center;
+}
+
+a, href{
+	padding-right: 5px;
+	padding-left: 5px;
+	border:none; 
+	color: #333;	
+}
+
+
+.formTitulo{
+	width: 600px;
+	font-size:18px;	
+}
+
+.formTexto{
+	width: 600px;
+	height: 400px;
+	font-size: 18px;		
+}
+
+td {
+	text-align:left;
+	padding-left: 20px;	
+	padding-right: 20px;	
+	padding-top: 5px;
+}
+
+.noticias {
+	 width: 800px;
+	 margin: auto;
+	 box-shadow: 0px 0px 5px #333;
+	 border-radius: 10px 10px 10px;
+	 padding: 20px;
+	 padding-bottom: 40px;
+	 background:#FFFFFF;
+}
+
+text {
+	text-align:left;	
+}
+
+.alinhaMeio {
+	width: 650px;
+	margin: auto;
+		
+}

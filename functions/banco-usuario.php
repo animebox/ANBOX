@@ -1,0 +1,37 @@
+<?php
+	class bancousuario extends banco{
+		
+		#Função que busca o usuário no banco
+		function BuscaUsuario($email)
+		{
+			$sql = "SELECT * FROM USUARIO WHERE USUARIOEMAIL='".$email."'";
+			$result = parent::Execute($sql);
+			return $result;
+		}
+		
+		#Função que verifica se já existe o usuário
+		function UsuarioJaExiste($email)
+		{
+			$sql = "SELECT * FROM USUARIO WHERE USUARIOEMAIL='".$email."'";
+			$result = parent::Execute($sql);
+			$num_rows = parent::Linha($result);
+			if($num_rows){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		#Função que cadastra o usuário
+		function Cadastro($email, $senha){
+			$sql = "INSERT INTO USUARIO (USUARIOEMAIL, USUARIOSENHA) VALUES ('".$email."', '".$senha."')";
+			parent::Execute($sql);
+		}
+		
+		#Função que altera os dados do usuário
+		function AlterarDados($email,$senha){
+			$sql = "UPDATE USUARIO SET USUARIOSENHA = '".$senha."' WHERE USUARIOEMAIL ='".$_SESSION['email']."'";
+			parent::Execute($sql);
+		}
+	}
+?>

@@ -1,0 +1,16 @@
+<form class="formNoticia" action="" method="post">
+	<%MSG%><br />
+    <br />
+	<input type="hidden" name="acao" value="acao">
+    Nome Anime:<br />
+    <input type="text" id="nomeanime" name="nomeanime" class="formTitulo"/><br /><br />
+    Imagem:<br />
+    <input type="file" id="imageanime" name="imageanime" class="formTitulo"/><br /><br />
+    Descrição:
+    <textarea id="descanime" name="descanime" cols="30" rows="5"  class="formTexto"/></textarea><br /><br />
+    Numero de Episodios:
+    <input type="number" id="epanime" name="epanime" min="1" max="1000" class="formTitulo" /><br /><br />
+    <input type="submit"  value='Incluir Anime' class="Botao"/>
+    <br /><br />	
+    <a href="<%URLPADRAO%>administrativo">Voltar</a>
+</form>
