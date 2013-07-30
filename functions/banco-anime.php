@@ -2,18 +2,31 @@
 	class bancoanime extends banco{
 		
 		#Fun√ß√£o que busca o anime no banco
-		function BuscaAnime($nome)
+		function BuscaAnime($id)
 		{
-			$sql = "SELECT * FROM ANIME WHERE ANIMENOME='".$nome."'";
+			$sql = "SELECT * FROM ANIME WHERE ANIMECOD='".$id."'";
 			$result = parent::Execute($sql);
 			return $result;
 		}
 		
-		function BuscaListaAnime()
+		function ListaAnime($itens)
 		{
-			$sql = "SELECT ANIMECOD,ANIMENOME FROM ANIME";
+			$sql = "SELECT * FROM ANIME";
 			$result = parent::Execute($sql);
-			return $result;
+			$num_rows = parent::Linha($result);
+		
+			#Monta no Html a Listagem
+			if ($num_rows){
+				while( $rs = mysql_fetch_array($result , MYSQL_ASSOC) )
+				{
+					$linha = $itens;
+					$linha = str_replace('<%ANIMENOME%>',$rs['ANIMENOME'],$linha);
+					$linha = str_replace('<%GENERO%>', "GENERO",$linha);
+					$linha = str_replace('<%ANIMECOD%>',$rs['ANIMECOD'],$linha);
+					$animes .= $linha;
+				}
+			}
+			return $animes;
 		}
 		
 		#Fun√ß√£o que verifica se j√° existe o anime
@@ -29,9 +42,15 @@
 			}
 		}
 		
-		#Fun√ß√£o que cadastra o anime
-		function Cadastro($nome,$desc,$image,$episodio){
-			$sql = "INSERT INTO ANIME (ANIMENOME,ANIMEDESCRICAO,ANIMEIMAGE,ANIMEEPISODIOS) VALUES ('".$nome."','".$desc."','".$image."','".$episodio."')";
+		#FunÁ„o que cadastra o anime
+		function Cadastro($nome){
+			$sql = "INSERT INTO ANIME (ANIMENOME) VALUES ('".$nome."')";
+			parent::Execute($sql);
+		}
+		
+		#FunÁ„o que atualiza o anome
+		function Atualiza($nome, $id){
+			$sql = "UPDATE ANIME SET ANIMENOME = '".$nome."' WHERE ANIMECOD = '".$id."' ";
 			parent::Execute($sql);
 		}
 	}
