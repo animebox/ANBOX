@@ -35,11 +35,7 @@
 		if($pagina == $i){
 			$listapagina .= ' '.$i.' ';
 		} else {
-			if ($i == 1) {
-				$listapagina .= ' <a href="1">'.$i.'</a> ';
-			} else {
-				$listapagina .= ' <a href="'.$i.'">'.$i.'</a> ';
-			}
+			$listapagina .= ' <a href="'.UrlPadrao.'Noticias/'.$i.'">'.$i.'</a> ';
 		}
 	}
 		
