@@ -104,12 +104,8 @@ td {
 }
 
 .noticias {
-	 width: 800px;
+	 width: 1200px;
 	 margin: auto;
-	 box-shadow: 0px 0px 5px #333;
-	 border-radius: 10px 10px 10px;
-	 padding: 20px;
-	 padding-bottom: 40px;
 	 background:#FFFFFF;
 }
 
@@ -118,7 +114,29 @@ text {
 }
 
 .alinhaMeio {
-	width: 650px;
+	width: 300px;
+	height: 220px;
 	margin: auto;
-		
+}
+
+.noticiasquadro {
+	
+}
+
+.noticiaBox {
+	background-color: #09F;	
+	width:	320px;
+	height: 290px;
+	margin: 20px;
+	padding: 10px;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 1px 1px 10px #333;
+	color: #fff;
+	position: relative;
+	float: left;
+}
+
+.clear {
+ text-align:center;
+ clear:both; 
 }

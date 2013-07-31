@@ -8,11 +8,11 @@
 	$banco = new banconoticia;
 	
 	#Trabalha com Post
-	if(isset($_POST["titulo"]) && $_POST["texto"] != ''){
+	if(isset($_POST["titulo"])){
 		$titulo = strip_tags(trim(addslashes($_POST["titulo"])));
 		$texto = strip_tags(trim(addslashes($_POST["texto"])));
 		$embed = strip_tags(trim(addslashes($_POST["embed"])));
-		if($titulo != "" && $texto != ""){
+		if($titulo != ""){
 			$banco->Cadastro($titulo, $texto, $embed);
 			$msg = "Noticia publicada com sucesso!";
 		}else{

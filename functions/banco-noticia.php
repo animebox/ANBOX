@@ -3,20 +3,20 @@
 		
 		#Função que cadastra a noticia
 		function Cadastro($titulo, $texto, $embed){
-			$sql = "INSERT INTO NOTICIA (NOTICIATITULO, NOTICIAEMBED ,NOTICIATEXTO) VALUES ('".$titulo."', '".$embed."', '".$texto."')";
+			$sql = "INSERT INTO NOTICIA (NOTICIATITULO, NOTICIAEMBED) VALUES ('".$titulo."', '".$embed."')";
 			parent::Execute($sql);
 		}
 		
 		function BuscaListaNoticia($pagina){
-			$limite = 10;
+			$limite = 9;
 			$inicio = ($pagina * $limite) - $limite;
-			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIATEXTO, NOTICIAEMBED FROM NOTICIA ORDER BY NOTICIAID DESC LIMIT ".$inicio.",".$limite."";
+			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED FROM NOTICIA ORDER BY NOTICIAID DESC LIMIT ".$inicio.",".$limite."";
 			$result = parent::Execute($sql);
 			return $result;
 		}
 		
 		function BuscaNoticia($noticia){
-			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIATEXTO, NOTICIAEMBED FROM NOTICIA WHERE NOTICIAID = ".$noticia;
+			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED FROM NOTICIA WHERE NOTICIAID = ".$noticia;
 			$result = parent::Execute($sql);
 			return $result;
 		}
@@ -25,7 +25,7 @@
 			$sql = "SELECT NOTICIAID FROM NOTICIA";	
 			$result = parent::Execute($sql);
 			$totalPaginas = mysql_num_rows($result);
-			$result = ceil($totalPaginas / 10);
+			$result = ceil($totalPaginas / 9);
 			return $result;
 		}
 	}
