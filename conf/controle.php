@@ -18,7 +18,7 @@
 					$Conteudo = $banco->ChamaPhp($banco->Pagina);
 				}
 			}else{
-				$Conteudo = $banco->ChamaPhp('Noticias');
+				$Conteudo = $banco->ChamaPhp('noticias');
 			}
 			
 						

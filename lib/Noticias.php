@@ -17,7 +17,6 @@
 	$result = $banco->BuscaListaNoticia($pagina);
 	
 
-
 	while($linha = mysql_fetch_array($result, MYSQL_ASSOC)){				
 		$msg .= '<div id="'.$linha["NOTICIAID"].'" class="noticiaBox">';		
 		$msg .= '<div class="noticiaTitulo">';
@@ -37,9 +36,9 @@
 			$listapagina .= ' '.$i.' ';
 		} else {
 			if ($i == 1) {
-				$listapagina .= ' <a href="http://animebox.com.br/">'.$i.'</a> ';
+				$listapagina .= ' <a href="1">'.$i.'</a> ';
 			} else {
-				$listapagina .= ' <a href="Noticias/'.$i.'">'.$i.'</a> ';
+				$listapagina .= ' <a href="'.$i.'">'.$i.'</a> ';
 			}
 		}
 	}
@@ -47,7 +46,7 @@
 	$listapagina .= '</div>';
 	
 	#Imprime Valores
-	$Conteudo = $banco->CarregaHtml('Noticias');
+	$Conteudo = $banco->CarregaHtml('noticias');
 	$Conteudo = str_replace('<%MSG%>', $msg, $Conteudo);
 	$Conteudo = str_replace('<%PAGINAS%>', $listapagina, $Conteudo);
 

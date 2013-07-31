@@ -2,3 +2,4 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule !\.(js|ico|txt|gif|jpg|png|xml|css|/)$ index.php
+RewriteRule ^noticias/$ noticias.php?pagina1=$1&pagina2=$2&pagina3=$3
