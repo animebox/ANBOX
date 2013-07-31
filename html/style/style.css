@@ -6,7 +6,7 @@ Body {
 }
 	
 .Geral{
-	padding-bottom: 50px;
+	padding-bottom: 30px;
 	width: 100%;
 	margin: auto;
 }
@@ -26,14 +26,13 @@ Body {
 
 
 .logo{
-	background-color: #333;
+	background-color: #242424;
 	background-image: url(../images/animebox.png);
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 120px;
+	height: 140px;
 	width: 100%;
 	margin: auto;
-	
 }
 
 .central{
