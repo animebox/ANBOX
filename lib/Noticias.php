@@ -12,8 +12,11 @@
 		$pagina = $this->PaginaAux[0];
 	} 
 	
+	$paginas = $banco->CriaPaginacao();
+	
 	$result = $banco->BuscaListaNoticia($pagina);
-	$paginas = $banco->BuscaListaPaginas($paginas);
+	
+
 
 	while($linha = mysql_fetch_array($result, MYSQL_ASSOC)){				
 		$msg .= '<div id="'.$linha["NOTICIAID"].'" class="noticiaBox">';		
@@ -25,19 +28,22 @@
 		$msg .= '</div>';
 		$msg .= '</div>';
 	}
-	
+
 	$listapagina .= '<div id="paginas" class="clear"><br><br> Pagina ';
-	for($i=1; $i<=$paginas;$i++){
+	
+	
+	for($i=1;$i<=$paginas;$i++){
 		if($pagina == $i){
 			$listapagina .= ' '.$i.' ';
 		} else {
-			if ($i = 1) {
-				$listapagina .= ' <a href="http://animebox.com.br">'.$i.'</a> ';
+			if ($i == 1) {
+				$listapagina .= ' <a href="http://animebox.com.br/">'.$i.'</a> ';
 			} else {
 				$listapagina .= ' <a href="Noticias/'.$i.'">'.$i.'</a> ';
 			}
 		}
-	}	
+	}
+		
 	$listapagina .= '</div>';
 	
 	#Imprime Valores

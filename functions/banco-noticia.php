@@ -21,7 +21,7 @@
 			return $result;
 		}
 		
-		function BuscaListaPaginas($paginas){
+		function CriaPaginacao(){
 			$sql = "SELECT NOTICIAID FROM NOTICIA";	
 			$result = parent::Execute($sql);
 			$totalPaginas = mysql_num_rows($result);

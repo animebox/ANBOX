@@ -26,10 +26,14 @@ Body {
 
 
 .logo{
+	background-color: #333;
 	background-image: url(../images/animebox.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 120px;
+	width: 100%;
+	margin: auto;
+	
 }
 
 .central{

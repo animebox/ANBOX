@@ -27,7 +27,7 @@
 			$SaidaHtml = str_replace('<%URLPADRAO%>',UrlPadrao,$SaidaHtml);
 
 			#Imprime tela
-			echo utf8_encode($SaidaHtml);
+			echo $SaidaHtml;
 			
 		}
 	}
