@@ -1,52 +1,39 @@
 <?php
-	$msg = "";
-	$animeNome = "";
-	$botao = "Incluir Anime";
-	
+
 	#Include nas funcoes do anime
 	include('functions/banco-anime.php');
+	include_once('analyticstracking.php');
 	
 	#Instancia objeto que vai tratar o banco de dados dessa pÃ¡gina
 	$banco = new bancoanime;
-	
-	#Verifica se está editando
-	if($this->PaginaAux[0] == "editar"){
-		$id = $this->PaginaAux[1];
-		$result = $banco->BuscaAnime($id);
-		$num_rows = $banco->Linha($result);
-		$rs = mysql_fetch_array($result , MYSQL_ASSOC);
-		$animeNome = $rs['ANIMENOME'];
-		$botao = "Alterar Anime";
-	}	
-	
-	#Trabalha com Post
-	if(isset($_POST["acao"]) && $_POST["acao"] != ''){
-		$nome = strip_tags(trim(addslashes($_POST["nomeanime"])));
-		if($nome != ""){
-			#Se for editar, usa outra função
-			if($this->PaginaAux[0] == "editar"){
-				$banco->Atualiza($nome, $id);
-				$banco->RedirecionaPara("lista-anime");
-			}else{
-				#Verifica se já existe o anime cadastrado
-				$existe = $banco->ANIMEJaExiste($nome);
-				
-				if($existe){
-					$msg = "Anime já cadastrado";
-				}else{
-					$banco->Cadastro($nome);
-					$msg = "Anime cadastrado com sucesso!";
-				}
-			}
-		}else{
-			$msg = "Favor preencher todos os campos!";
-		}
+
+	$anime = 1;
+
+	if($this->PaginaAux[0]){
+		$anime = $this->PaginaAux[0];
 	}
 	
+	$anime = urldecode($anime);
+	
+	$result = $banco->BuscaAnime($anime);
+	
+	$msg .= '<div>';
+	while($linha = mysql_fetch_array($result, MYSQL_ASSOC)){
+		if($linha['ANIMEEPISODIOS'] == ''){
+			$totalepisodios = 'NÃ£o Especificado';	
+		} else {
+			$totalepisodios = $linha['ANIMEEPISODIOS'];
+		}
+		$msg .= '<h3>'.utf8_decode($linha['ANIMENOME']).'</h3>';
+		$msg .= '<div style="position: relative; float:left; width: 330px;"><img src="'.$linha['ANIMEIMAGE'].'" class="imagemAnime"></div>';
+		$msg .= '<h4><div style="position: relative; float:right; width: 870px"> Sinopse: <br><br>'.utf8_decode($linha['ANIMEDESCRICAO']).'<br><br> Total de Episodios: '.utf8_decode($totalepisodios).'</div></h4>';
+		$msg .= '<div style="clear:both;" id="listaepisodio" class="listaepisodio">';
+		
+		$msg .= '</div>';
+	}
+	$msg .= '</div>';
 	#Imprime Valores
 	$Conteudo = $banco->CarregaHtml('anime');
 	$Conteudo = str_replace('<%MSG%>', $msg, $Conteudo);
-	$Conteudo = str_replace('<%NOMEANIME%>', $animeNome, $Conteudo);
-	$Conteudo = str_replace('<%BOTAO%>', $botao, $Conteudo);
 
 ?>

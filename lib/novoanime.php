@@ -12,16 +12,15 @@
 		$nome = strip_tags(trim(addslashes($_POST["nomeanime"])));
 		$desc = strip_tags(trim(addslashes($_POST["descanime"])));
 		$image = strip_tags(trim(addslashes($_POST["imageanime"])));
-		$ep = strip_tags(trim(addslashes($_POST["epanime"])));
 		
-		if($nome != "" or $desc != "" or $image != "" or $ep != "" ){
+		if($nome != "" or $desc != "" or $image != "" ){
 			#Verifica se já existe o anime cadastrado
 			$existe = $banco->ANIMEJaExiste($nome);
 			
 			if($existe){
 				$msg = "Anime ja cadastrado";
 			}else{
-				$banco->Cadastro($nome,$desc,$image,$ep);
+				$banco->Cadastro($nome,$image,$desc);
 				$msg = "Anime cadastrado com sucesso!";
 			}
 		}else{

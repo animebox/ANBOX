@@ -2,9 +2,15 @@
 	class bancoanime extends banco{
 		
 		#FunÃ§Ã£o que busca o anime no banco
-		function BuscaAnime($id)
+		function BuscaAnime($nome)
 		{
-			$sql = "SELECT * FROM ANIME WHERE ANIMECOD='".$id."'";
+			$sql = "SELECT ANIMENOME,ANIMEIMAGE,ANIMEDESCRICAO,ANIMEEPISODIOS FROM ANIME WHERE ANIMENOME='".$nome."'";
+			$result = parent::Execute($sql);
+			return $result;
+		}
+		
+		function BuscaEpisodio($anime,$episodio) {
+			$sql = "SELECT NOTICIATITULO,NOTICIAEMBED,NOTICIAEPISODIO FROM NOTICIA WHERE NOTICIATITULO = '".$anime."' AND NOTICIAEPISODIO = '".$episodio."'";
 			$result = parent::Execute($sql);
 			return $result;
 		}
@@ -43,8 +49,8 @@
 		}
 		
 		#Função que cadastra o anime
-		function Cadastro($nome){
-			$sql = "INSERT INTO ANIME (ANIMENOME) VALUES ('".$nome."')";
+		function Cadastro($nome,$image,$descricao){
+			$sql = "INSERT INTO ANIME (ANIMENOME,ANIMEDESCRICAO,ANIMEIMAGE) VALUES ('".$nome."','".$descricao."','".$image."')";
 			parent::Execute($sql);
 		}
 		
@@ -53,5 +59,7 @@
 			$sql = "UPDATE ANIME SET ANIMENOME = '".$nome."' WHERE ANIMECOD = '".$id."' ";
 			parent::Execute($sql);
 		}
+		
+
 	}
 ?>

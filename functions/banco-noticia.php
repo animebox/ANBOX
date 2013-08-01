@@ -2,21 +2,21 @@
 	class banconoticia extends banco{
 		
 		#Função que cadastra a noticia
-		function Cadastro($titulo, $texto, $embed){
-			$sql = "INSERT INTO NOTICIA (NOTICIATITULO, NOTICIAEMBED) VALUES ('".$titulo."', '".$embed."')";
+		function Cadastro($titulo, $episodio, $embed){
+			$sql = "INSERT INTO NOTICIA (NOTICIATITULO, NOTICIAEMBED, NOTICIAEPISODIO) VALUES ('".$titulo."', '".$embed."','".$episodio."')";
 			parent::Execute($sql);
 		}
 		
 		function BuscaListaNoticia($pagina){
-			$limite = 9;
+			$limite = 12;
 			$inicio = ($pagina * $limite) - $limite;
-			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED FROM NOTICIA ORDER BY NOTICIAID DESC LIMIT ".$inicio.",".$limite."";
+			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED,NOTICIAEPISODIO FROM NOTICIA ORDER BY NOTICIAID DESC LIMIT ".$inicio.",".$limite."";
 			$result = parent::Execute($sql);
 			return $result;
 		}
 		
 		function BuscaNoticia($noticia){
-			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED FROM NOTICIA WHERE NOTICIAID = ".$noticia;
+			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED,NOTICIAEPISODIO FROM NOTICIA WHERE NOTICIAID = ".$noticia;
 			$result = parent::Execute($sql);
 			return $result;
 		}
@@ -25,7 +25,12 @@
 			$sql = "SELECT NOTICIAID FROM NOTICIA";	
 			$result = parent::Execute($sql);
 			$totalPaginas = mysql_num_rows($result);
-			$result = ceil($totalPaginas / 9);
+			$result = ceil($totalPaginas / 12);
+			return $result;
+		}
+		function ListaAnimeNoticia() {
+			$sql = "SELECT ANIMENOME FROM ANIME";
+			$result = parent::Execute($sql);
 			return $result;
 		}
 	}
