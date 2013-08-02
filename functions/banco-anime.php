@@ -1,12 +1,23 @@
 <?php
 	class bancoanime extends banco{
 		
-		#Função que busca o anime no banco
-		function BuscaAnime($nome)
+		function ExisteAnime($AnimeNome){
+			$Query = "SELECT ANIMENOME FROM ANIME WHERE ANIMENOME LIKE '%".$AnimeNome."%'";
+			$Resultado = parent::Execute($Query);
+			return $Resultado;
+		}
+		
+		function BuscaAnime($AnimeNome)
 		{
-			$sql = "SELECT ANIMENOME,ANIMEIMAGE,ANIMEDESCRICAO,ANIMEEPISODIOS FROM ANIME WHERE ANIMENOME='".$nome."'";
-			$result = parent::Execute($sql);
-			return $result;
+			$Query = "SELECT ANIMENOME,ANIMEIMAGE,ANIMEDESCRICAO,ANIMEEPISODIOS FROM ANIME WHERE ANIMENOME='".$AnimeNome."'";
+			$Resultado = parent::Execute($Query);
+			return $Resultado;
+		}
+		
+		function ListaEpisodio($AnimeNome){
+			$Query =  "SELECT NOTICIATITULO,NOTICIAEMBED,NOTICIAEPISODIO FROM NOTICIA WHERE NOTICIATITULO = '".$AnimeNome."'";
+			$Resultado = parent::Execute($Query);
+			return $Resultado;
 		}
 		
 		function BuscaEpisodio($anime,$episodio) {
@@ -14,6 +25,8 @@
 			$result = parent::Execute($sql);
 			return $result;
 		}
+		
+
 		
 		function ListaAnime($itens)
 		{

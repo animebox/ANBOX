@@ -2,4 +2,8 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule !\.(js|ico|txt|gif|jpg|png|xml|css|/)$ index.php
-RewriteRule ^noticias/$ noticias.php?pagina1=$1&pagina2=$2&pagina3=$3
+ErrorDocument 400	/index.php
+ErrorDocument 401 	/index.php
+ErrorDocument 403 	/index.php
+ErrorDocument 404 	/index.php
+ErrorDocument 500 	/index.php

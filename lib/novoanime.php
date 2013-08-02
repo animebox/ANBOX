@@ -10,7 +10,7 @@
 	#Trabalha com Post
 	if(isset($_POST["acao"]) && $_POST["acao"] != ''){
 		$nome = strip_tags(trim(addslashes($_POST["nomeanime"])));
-		$desc = strip_tags(trim(addslashes($_POST["descanime"])));
+		$desc = $_POST["descanime"];
 		$image = strip_tags(trim(addslashes($_POST["imageanime"])));
 		
 		if($nome != "" or $desc != "" or $image != "" ){
@@ -20,7 +20,7 @@
 			if($existe){
 				$msg = "Anime ja cadastrado";
 			}else{
-				$banco->Cadastro($nome,$image,$desc);
+				$banco->Cadastro($nome,$image,utf8_decode($desc));
 				$msg = "Anime cadastrado com sucesso!";
 			}
 		}else{

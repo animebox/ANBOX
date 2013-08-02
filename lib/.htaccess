@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Area Restrita"
+AuthUserFile www.animebox.com.br/.htpasswd
+Require valid-userOptions All -Indexes

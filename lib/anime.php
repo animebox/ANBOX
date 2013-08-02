@@ -7,33 +7,44 @@
 	#Instancia objeto que vai tratar o banco de dados dessa página
 	$banco = new bancoanime;
 
-	$anime = 1;
-
 	if($this->PaginaAux[0]){
 		$anime = $this->PaginaAux[0];
 	}
 	
 	$anime = urldecode($anime);
-	
 	$result = $banco->BuscaAnime($anime);
-	
-	$msg .= '<div>';
-	while($linha = mysql_fetch_array($result, MYSQL_ASSOC)){
+	if(mysql_num_rows($result) == 0) {
+		$msg = '<h3 align="center" style="margin-top:100px;">Opa, parece que sua pesquisa não gerou nenhum resultado, tente novamente.</h3>';
+		$msg .= '<h3 align="center" style="margin-bottom:400px;"><a href="<%URLPADRAO%>" class="LinkEscuro">Voltar</a></h3>';
+	} else
+	{
+		$linha = mysql_fetch_assoc($result);	
 		if($linha['ANIMEEPISODIOS'] == ''){
 			$totalepisodios = 'Não Especificado';	
 		} else {
 			$totalepisodios = $linha['ANIMEEPISODIOS'];
 		}
-		$msg .= '<h3>'.utf8_decode($linha['ANIMENOME']).'</h3>';
-		$msg .= '<div style="position: relative; float:left; width: 330px;"><img src="'.$linha['ANIMEIMAGE'].'" class="imagemAnime"></div>';
-		$msg .= '<h4><div style="position: relative; float:right; width: 870px"> Sinopse: <br><br>'.utf8_decode($linha['ANIMEDESCRICAO']).'<br><br> Total de Episodios: '.utf8_decode($totalepisodios).'</div></h4>';
-		$msg .= '<div style="clear:both;" id="listaepisodio" class="listaepisodio">';
-		
+			
+		$msg .= '<div>';
+			$msg .= '<h3>'.$linha['ANIMENOME'].'</h3>';
+			$msg .= '<div class="AnimeImage"><img src="'.$linha['ANIMEIMAGE'].'" class="Image300"></div>';
+				$msg .= '<h5><div class="AnimeDescricao">'.$linha['ANIMEDESCRICAO'].'</div></h5>';
+				$msg .= '<h6><div class="AnimeDescricao">Total de Episodios: '.$totalepisodios.'</div></h6>';
+		$msg .= '<div class="AnimeEpisodio">';
+		$msg .= '<h3>Episódios</h3>';
+		$episodios = $banco->ListaEpisodio($anime);
+		while($linhaepisodio = mysql_fetch_array($episodios, MYSQL_ASSOC)){
+			$msg .= '<div class="AnimeEpisodioQuadro">';
+			$msg .= ' <a href="<%URLPADRAO%>episodio/'.$linhaepisodio["NOTICIATITULO"].'/'.$linhaepisodio["NOTICIAEPISODIO"].'" class="LinkEscuro">'.$linhaepisodio["NOTICIAEPISODIO"].'</a>  | ';
+			$msg .= '</div>';
+		}
 		$msg .= '</div>';
+		$msg .= '</div>';
+		
+		$msg .= '<div style="clear: both;"> </div>';
 	}
-	$msg .= '</div>';
 	#Imprime Valores
 	$Conteudo = $banco->CarregaHtml('anime');
-	$Conteudo = str_replace('<%MSG%>', $msg, $Conteudo);
+	$Conteudo = str_replace('<%MSG%>', utf8_decode($msg), $Conteudo);
 
 ?>

@@ -1,0 +1,17 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://www.animebox.com.br/noticias/</loc>
+		<changefreq>always</changefreq>
+		<priority>1</priority>
+	</url>
+	<url>
+		<loc>http://www.animebox.com.br/anime/</loc>
+		<changefreq>always</changefreq>
+		<priority>1</priority>
+	</url>
+	<url>
+		<loc>http://www.animebox.com.br/episodio/</loc>
+		<changefreq>always</changefreq>
+		<priority>1</priority>
+	</url>
+</urlset>

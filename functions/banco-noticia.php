@@ -15,6 +15,14 @@
 			return $result;
 		}
 		
+		function BuscaListaNoticiaAnime($pagina, $anime){
+			$limite = 12;
+			$inicio = ($pagina * $limite) - $limite;
+			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED,NOTICIAEPISODIO FROM NOTICIA WHERE NOTICIATITULO = '".$anime."' ORDER BY NOTICIAID DESC LIMIT ".$inicio.",".$limite."";
+			$result = parent::Execute($sql);
+			return $result;
+		}
+		
 		function BuscaNoticia($noticia){
 			$sql = "SELECT NOTICIAID,NOTICIATITULO,NOTICIAEMBED,NOTICIAEPISODIO FROM NOTICIA WHERE NOTICIAID = ".$noticia;
 			$result = parent::Execute($sql);
@@ -28,6 +36,7 @@
 			$result = ceil($totalPaginas / 12);
 			return $result;
 		}
+		
 		function ListaAnimeNoticia() {
 			$sql = "SELECT ANIMENOME FROM ANIME";
 			$result = parent::Execute($sql);
