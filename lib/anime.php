@@ -10,6 +10,7 @@
 	if($this->PaginaAux[0]){
 		$anime = $this->PaginaAux[0];
 	}
+	$anime = preg_replace('/-/',' ',$anime);
 	
 	$anime = urldecode($anime);
 	$result = $banco->BuscaAnime($anime);
@@ -24,7 +25,7 @@
 		} else {
 			$totalepisodios = $linha['ANIMEEPISODIOS'];
 		}
-			
+		$animeURL = $banco->ConverterAscii($linha["ANIMENOME"]);
 		$msg .= '<div>';
 			$msg .= '<h3>'.$linha['ANIMENOME'].'</h3>';
 			$msg .= '<div class="AnimeImage"><img src="'.$linha['ANIMEIMAGE'].'" class="Image300"></div>';
@@ -35,13 +36,20 @@
 		$episodios = $banco->ListaEpisodio($anime);
 		while($linhaepisodio = mysql_fetch_array($episodios, MYSQL_ASSOC)){
 			$msg .= '<div class="AnimeEpisodioQuadro">';
-			$msg .= ' <a href="<%URLPADRAO%>episodio/'.$linhaepisodio["NOTICIATITULO"].'/'.$linhaepisodio["NOTICIAEPISODIO"].'" class="LinkEscuro">'.$linhaepisodio["NOTICIAEPISODIO"].'</a>  | ';
+			$msg .= ' <a href="<%URLPADRAO%>episodio/'.$animeURL.'/'.$linhaepisodio["NOTICIAEPISODIO"].'" class="LinkEscuro">'.$linhaepisodio["NOTICIAEPISODIO"].'</a>  | ';
 			$msg .= '</div>';
 		}
 		$msg .= '</div>';
 		$msg .= '</div>';
 		
 		$msg .= '<div style="clear: both;"> </div>';
+		
+		/* ADICIONAR TITULO A PAGINA */
+		$msg .= '<input type="hidden" id="titulopagina" value="'.$linha["ANIMENOME"].' | Assistir Episódios Online">'; # <--------------- Digia no VALUE o titulo da pagina!!!!
+		$msg .= '<script type="text/javascript">';
+		$msg .= 'TrocaTitulo();';
+		$msg .= '</script>';
+		
 	}
 	#Imprime Valores
 	$Conteudo = $banco->CarregaHtml('anime');

@@ -26,26 +26,10 @@
 			return $result;
 		}
 		
-
-		
-		function ListaAnime($itens)
-		{
-			$sql = "SELECT * FROM ANIME";
-			$result = parent::Execute($sql);
-			$num_rows = parent::Linha($result);
-		
-			#Monta no Html a Listagem
-			if ($num_rows){
-				while( $rs = mysql_fetch_array($result , MYSQL_ASSOC) )
-				{
-					$linha = $itens;
-					$linha = str_replace('<%ANIMENOME%>',$rs['ANIMENOME'],$linha);
-					$linha = str_replace('<%GENERO%>', "GENERO",$linha);
-					$linha = str_replace('<%ANIMECOD%>',$rs['ANIMECOD'],$linha);
-					$animes .= $linha;
-				}
-			}
-			return $animes;
+		function ListaAnime($Letra){
+			$Query = "SELECT ANIMENOME,ANIMEIMAGETHUMB,ANIMEEPISODIOS FROM ANIME WHERE ANIMENOME LIKE '".$Letra."%'";
+			$Resultado = parent::Execute($Query);
+			return $Resultado;
 		}
 		
 		#Função que verifica se já existe o anime

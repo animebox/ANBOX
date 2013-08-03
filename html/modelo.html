@@ -1,22 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script src="<%URLPADRAO%>html/script/titulo.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 <link rel="shortcut icon" href="http://www.iconj.com/ico/k/o/kopl2i16bs.ico" type="image/x-icon" />
-<title>AnimeBOX - Seu portal brasileiro de Animes Online</title>
+<title>AnimeBox</title>
 <meta content='Anime Box, seu portal de animes online, rapido e pratico.' name='description'/>
-<meta content='otaku,otaka,anime,manga,online,episodio,naruto,onepiece,bleach,fairytail,animeonline,japan,brasil,animebox,anbox,anime-box,anime box,anime-online,manga-online,curitiba,brasileiro,anime brasileiro,episodios online,ao vivo,aovivo' name='keywords'/>
-<meta content='otaku.otaka.anime.manga.online.episodio.naruto.onepiece.bleach.fairytail.animeonline.japan.brasil.animebox.anbox.anime-box.anime box.anime-online.manga-online.curitiba.brasileiro.anime brasileiro.episodios online.ao vivo.aovivo' name='robots'/>
+<meta content='otaku,otaka,anime,manga,online,episodio,naruto,onepiece,bleach,fairytail,animeonline,japan,brasil,animebox,anbox,anime-box,anime box,anime-online,manga-online,curitiba,brasileiro,anime brasileiro,episodios online,ao vivo,aovivo,brasil,brazil' name='keywords'/>
+<meta content='otaku.otaka.anime.manga.online.episodio.naruto.onepiece.bleach.fairytail.animeonline.japan.brasil.animebox.anbox.anime-box.anime box.anime-online.manga-online.curitiba.brasileiro.anime brasileiro.episodios online.ao vivo.aovivo.brasil.brazil' name='robots'/>
 <meta content='Leonardo Tosin' name='author'/>
-
-	
-	<link href="<%URLPADRAO%>html/style/style.css" rel="stylesheet" type="text/css" />
+<meta name="robots" content="index, follow">
+<link href="<%URLPADRAO%>html/style/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div>
 		<div class="MenuSuperior">
 			<div class="ImagemCabecalho"><a href="<%URLPADRAO%>"><img src="<%URLPADRAO%>html/images/animebox.png"/></a> </div>
-            <div class="DivPesquisa"><%BUSCA%></div>
+
+            <div class="DivPesquisa">
+            	<form action="<%URLPADRAO%>busca" method="post">
+					<input type="hidden" name="acao" value="acao">
+				    <input type="text" id="pesquisa" name="pesquisa" placeholder="Buscar anime..." class="CampoPesquisa"/><input type="submit"  value='Pesquisar' class="BotaoPesquisa"/>
+				</form>
+       		</div>
+			<div class="DivListao">
+            	<a href="<%URLPADRAO%>animes" class="BotaoListao">Lista de Animes</a>
+            </div>
 		</div>
 		<div class="TelaPrincipal">
         	<div class="ConteudoPrincipal">

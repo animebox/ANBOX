@@ -18,14 +18,12 @@
 					$Conteudo = $banco->ChamaPhp($banco->Pagina);
 				}
 			}else{
-				$Conteudo = $banco->ChamaPhp('noticias');
-				$busca = $banco->ChamaPhp('busca');						
+				$Conteudo = $banco->ChamaPhp('noticias');					
 			}
-				
+			
 			$SaidaHtml = $banco->CarregaHtml('modelo');
 			$SaidaHtml = str_replace('<%CONTEUDO%>',$Conteudo,$SaidaHtml);
 			$SaidaHtml = str_replace('<%URLPADRAO%>',UrlPadrao,$SaidaHtml);
-			$SaidaHtml = str_replace('<%BUSCA%>',$busca,$SaidaHtml);
 			#Imprime tela
 			echo $SaidaHtml;
 			

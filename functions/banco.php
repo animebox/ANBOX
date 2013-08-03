@@ -75,5 +75,12 @@
 				}
 			}
 		}
+		
+		function ConverterAscii($texto) {
+			$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $texto);
+			$clean = strtolower(trim($clean, '-'));
+			$clean = preg_replace("/[\/_|+ -]+/", '-', $clean);
+			return $clean;
+		}
 	}
 ?>

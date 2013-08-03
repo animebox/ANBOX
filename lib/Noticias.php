@@ -21,11 +21,12 @@
 	} else {
 		$result = $banco->BuscaListaNoticiaAnime($pagina,$anime);
 	}
-	
-	while($linha = mysql_fetch_array($result, MYSQL_ASSOC)){				
-		$msg .= '<div id="'.$linha["NOTICIAID"].'" class="VideoBox">';		
-			$msg .= '<div class="VideoTitulo">';
-				$msg .= '<a href="<%URLPADRAO%>anime/'.$linha["NOTICIATITULO"].'" class="LinkClaroGrande">'.$linha["NOTICIATITULO"].'</a> | <a href="<%URLPADRAO%>episodio/'.$linha["NOTICIATITULO"].'/'.$linha["NOTICIAEPISODIO"].'" class="LinkClaroPequeno">Episodio '.$linha["NOTICIAEPISODIO"].'</a>';
+	$msg .= '<h3>Destaques de Hoje</h3>';
+	while($linha = mysql_fetch_array($result, MYSQL_ASSOC)){		
+		$animeURL = $banco->ConverterAscii($linha["NOTICIATITULO"]);
+		$msg .= '<div id="'.$linha["NOTICIAID"].'" class="VideoBox">';
+			$msg .= '<div class="VideoTitulo" >';
+				$msg .= '<a href="<%URLPADRAO%>anime/'.$animeURL.'" class="LinkClaroGrande">'.$linha["NOTICIATITULO"].'</a> | <a href="<%URLPADRAO%>episodio/'.$animeURL.'/'.$linha["NOTICIAEPISODIO"].'" class="LinkClaroPequeno">Episodio '.$linha["NOTICIAEPISODIO"].'</a>';
 			$msg .=  '</div>';
 			$msg .= '<div class="VideoMeio">';
 				$msg .= '<object width="300" height="220" id="player_'.$linha["NOTICIAEMBED"].'"><param value="true" name="allowfullscreen"/><param value="http://player.mais.uol.com.br/embed_v2.swf?mediaId='.$linha["NOTICIAEMBED"].'&p=related" name="movie"/><param value="always" name="allowscriptaccess"/><param value="window" name="wmode"/><embed id="player_'.$linha["NOTICIAEMBED"].'" width="640" height="360" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" src="http://player.mais.uol.com.br/embed_v2.swf?mediaId='.$linha["NOTICIAEMBED"].'&p=related" wmode="window" /></embed><noscript></noscript></object>';
@@ -46,12 +47,19 @@
 				$listapagina .= ' <a href="<%URLPADRAO%>noticias/'.$i.'" class="LinkEscuroGrande">'.$i.'</a> ';
 			}
 		}
+		
 	}
 	$listapagina .= '</div>';
+	
+	/* ADICIONAR TITULO A PAGINA */
+	$msg .= '<input type="hidden" id="titulopagina" value="Destaques do Dia - Pagina '.$pagina.'">'; # <--------------- Digia no VALUE o titulo da pagina!!!!
+	$msg .= '<script type="text/javascript">';
+	$msg .= 'TrocaTitulo();';
+	$msg .= '</script>';
 	
 	#Imprime Valores
 	$Conteudo = $banco->CarregaHtml('noticias');
 	$Conteudo = str_replace('<%MSG%>', $msg, $Conteudo);
+	$Conteudo = str_replace('<%TITULO%>', $titulopagina, $Conteudo);
 	$Conteudo = str_replace('<%PAGINAS%>', $listapagina, $Conteudo);
-
 ?>

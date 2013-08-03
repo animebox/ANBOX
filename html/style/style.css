@@ -50,6 +50,29 @@
 			
 	}
 	
+	.DivListao
+	{	
+		margin-top: 50px;
+		margin-bottom: 50px;
+		margin-right: 50px;
+		margin-left: 20px;
+		float: left;
+		width: 200px;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		background-color: #09F;
+		text-align: center;
+		border-radius: 20 0 20 0;
+	}
+	
+	.BotaoListao
+	{
+		color: #FFF;
+		font-weight: bold;
+		font-size: 16px;
+		text-decoration: none;
+	}
+	
 	.CampoPesquisa 
 	{
 		width: 400px;
@@ -70,6 +93,7 @@
 		background-color: #09F;
 		font-size: 16px;
 		color: #FFF;
+		font-weight:bold;
 	}
 
 /* Imagens */
@@ -154,24 +178,35 @@
 	{
 		width: 1110;
 		margin: auto;
-		padding-top: 20px;
+		padding-top: 10px;
 		padding-bottom: 20px;
 	}
 	
 	.AnimeDescricao
 	{
 		float: right; 
-		width: 785px;
-		padding-left: 15px;
-		padding-right: 10px;
+		width: 725px;
 		font-size: 15px;
-		margin-bottom: 20px;
+		margin-bottom: 15px;
+		background-color: #333;
+		padding: 13px;
+		border-width: 3px;
+		border-style: solid;
+		border-color: #09F;
+		border-radius: 0 0 0 0;
+		color: #FFF;
 	}
 	
 	.AnimeImage
 	{
 		float: left;	
 		width: 300px;
+		background-color:#333;
+		padding:13px;
+		border-width: 3px;
+		border-style: solid;
+		border-color: #09F;
+		border-radius: 20 0 0 25;
 	}
 	
 	.AnimeEpisodio
@@ -196,20 +231,37 @@
 		font-size: 14px;
 		padding-top: 4px;
 		padding-bottom: 4px;
-		float: left;	
+		float: left;
 	}
 	
 	.EpisodioAtual
 	{
 		width: 640px;
 		float: left;	
+		margin:auto;
+		background-color:#333;
+		text-align: left;
+		padding:13px;
+		color: #FFF;
+		border-width: 3px;
+		border-style: solid;
+		border-color: #09F;
+		border-radius: 25 0 0 25;
 	}
+	
 	
 	.EpisodioOutro
 	{
-		padding-top: 70px;
-		width: 460px;	
+		width: 400px;	
 		float: right;
+		color: #FFF;
+		padding:13px;
+		background-color:#333;
+		border-width: 3px;
+		border-style: solid;
+		border-color: #09F;
+		border-radius: 0 25 25 0;
+		margin-bottom: 5px;
 	}
 	
 	
@@ -218,9 +270,8 @@
 		width:112px;
 		margin-bottom: 10px;
 		text-align: left;
-		background:	#FFF;
 		font-weight: bold;
-		font-size: 14px;
+		font-size: 16px;
 		padding-top: 4px;
 		padding-bottom: 4px;
 		float: left;	
@@ -267,7 +318,13 @@
 	.DivMeio
 	{
 		width: 1000;
-		margin: auto;	
+		margin: auto;
+	}
+
+	.DivMeioPequeno
+	{
+		width: 500;
+		margin: auto;
 	}
 	
 	.VideoMeio
@@ -309,4 +366,23 @@
 		text-align:center;
 		padding-top: 50px;
 	}
-		
+	
+	.AnimeRotulo
+	{
+		width: 500px;
+		margin-bottom: 5px;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		border:solid;
+		border-color:#09F;
+		background-color: #333;
+		font-size:22px;
+		box-shadow: 0px 0px 5px #333;
+	}
+	.AnimeAlfabeto
+	{
+		width: 500px;
+		margin:auto;
+	}
